@@ -10,9 +10,8 @@ searchBtn.addEventListener("click", function (e) {
 	};
 	function searchAlbums(data) {
 		var albumHTML = '<div>';
-		$.each( data.items, function(i, album) {
-		  console.log( JSON.stringify(album) );
-		  albumHTML = '<img src="' + album.images[0].url + '">';
+		$.each( data.albums.items, function(i, album) {
+		  albumHTML += '<img src="' + album.images[1].url + '">';
 		});
 		albumHTML += '</div>';
 		$('#imageGallery').html(albumHTML);
