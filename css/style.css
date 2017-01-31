@@ -9,10 +9,6 @@ img {
 	margin: 5px 30px 30px 30px;
 }
 
-img:hover {
-	transform: scale(1.1);
-}
-
 button:focus {
 	outline: 0;
 }
@@ -25,8 +21,8 @@ input:focus {
 	border-color: #1ED760;
 }
 
-footer {
-	margin-top: 150px;
+footer {/*
+	margin-top: 150px;*/
 	text-align: center;
 	padding-top: 2em;
 	padding-bottom: 2em;
@@ -117,12 +113,45 @@ footer {
 	display: inline-block;
 }
 
+#resultsFor {
+	margin-top: 2em;
+	text-align: center;
+}
+
+.search-title {
+	margin: 0 auto;
+	font-size: 2em;
+	color: rgb(162,77,242);
+}
+
 #imageGallery {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2em;
 	max-width: 1100px;
 	text-align: center;
+	min-height: calc(100vh - 416px);
+}
+
+.album-img:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.lb-caption p:first-of-type {
+	font-size: 2em;
+	line-height: 30px;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.lb-caption p:nth-child(2n) {
+	font-size: 1.2em;
+}
+
+.lb-data .lb-caption a {
+	font-size: 20px;
+	color: rgb(247,34,151);
 }
 
 ::-webkit-input-placeholder {

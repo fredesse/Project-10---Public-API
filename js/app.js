@@ -1,8 +1,19 @@
 var searchBtn = document.getElementById("search");
+var albumImage = document.querySelector(".album-img");
+var resultTitle = document.getElementById("resultsFor");
 
+// Searches for album artwork when button is pressed
 searchBtn.addEventListener("click", function (e) {
 	e.preventDefault();
 	var albums = document.getElementById("searchBar").value;
+
+	$(".search-title").remove();
+
+	var artworkFor = document.createElement("p");
+	artworkFor.className = "search-title";
+	artworkFor.textContent = "Album artwork for " + albums;
+	resultTitle.appendChild(artworkFor);
+
 	var spotifyAPI = "https://api.spotify.com/v1/search";
 	var spotifyOpts = {
 		q: albums,
@@ -11,7 +22,9 @@ searchBtn.addEventListener("click", function (e) {
 	function searchAlbums(data) {
 		var albumHTML = '<div>';
 		$.each( data.albums.items, function(i, album) {
-		  albumHTML += '<img src="' + album.images[1].url + '">';
+			albumHTML += '<a href="' + album.images[0].url + '" data-lightbox="roadtrip" data-title="<p><span>' + album.name + '</span></p><p><span>' + album.artists[0].name + '</span></p><p><a href=' + album.external_urls.spotify + '>Listen to ' + album.artists[0].name + '</a><p>">';
+			albumHTML += '<img src="' + album.images[1].url + '" class="album-img">';
+			albumHTML += '</a>';
 		});
 		albumHTML += '</div>';
 		$('#imageGallery').html(albumHTML);
@@ -19,8 +32,31 @@ searchBtn.addEventListener("click", function (e) {
 	$.getJSON(spotifyAPI, spotifyOpts, searchAlbums);
 });
 
+$("#imageGallery").on("click", ".album-img", function(event) {
+	event.preventDefault();
+	console.log("I was clicked");
+
+	function getCurrentAlbum(currentAlbum) {
+		var imageLocation = $(currentAlbum).attr("href");
+		$image.attr("src", imageLocation);
+	};
+})
+
+$("#searchBar").focus(function() {
+	$(this).val('');
+	$(this).attr("placeholder", "");
+})
+
+$("#searchBar").focusout(function() {
+	if ($(this).val() == '') {
+		$(this).attr("placeholder", "Search...");
+	};
+})
+
+/*
+
 var $overlay = $('<div id="overlay"></div>');
-var $image = $('<iframe></iframe>');
+var $image = $('<img></img>');
 var $caption = $("<p></p>");
 var $title = $("<h1></h1>");
 
@@ -41,8 +77,6 @@ $("body").append($overlay);   // Adds overlay to body
 
 $("#imageGallery a").click(function(event) {		// Captures the click event on a link
 	event.preventDefault();
-
-	getCurrentImage(this);
 
 	$overlay.fadeTo('slow', 1).show();
 });
@@ -81,7 +115,7 @@ function getCurrentImage (currentImage) {				// Gets current image
 	$image.attr("src", imageLocation).attr("frameborder", "0").attr("scrolling", "no").attr("allowfullscreen", "allowfullscreen");
 
 	
-	var captionTitle = $(currentImage).children("img").attr("title");		// Sets the title
+	var captionTitle = $(currentImage).attr("data-title");		// Sets the title
 	$title.text(captionTitle);
 	
 	var captionText = $(currentImage).children("img").attr("alt");			// Sets the captions 
@@ -113,4 +147,4 @@ $(document).keyup(function(e) {			// Hides overlay with ESC
 	if (e.keyCode == 27) {
 		$overlay.hide('slow');
 	}
-});
+});*/
