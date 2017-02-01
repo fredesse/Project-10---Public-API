@@ -73,6 +73,7 @@ footer {/*
 	background-color: rgba(0,0,0,.6);
 	padding: 1em 0;
 	text-align: center;
+	z-index: 1000;
 }
 
 .main-heading {
@@ -94,19 +95,6 @@ footer {/*
 
 .btn img:hover {
 	transform: none;
-}
-
-#help {
-	margin-top: 0;
-	padding-top: 1em;
-	margin-left: 60%;
-	font-style: italic;
-	color: #9BF0E1;
-}
-
-#help:hover {
-	cursor: pointer;
-	color: #1ED760;
 }
 
 .col {
@@ -131,6 +119,7 @@ footer {/*
 	max-width: 1100px;
 	text-align: center;
 	min-height: calc(100vh - 416px);
+	z-index: 900;
 }
 
 .album-img:hover {
@@ -173,126 +162,5 @@ footer {/*
    text-align: center;
    color: #fff;
 }
-
-
-/* Overlay, iframe & arrows */
-
-
-#overlay {
-	background: rgba(0, 0, 0, .7);
-	width: 100%;
-	height: 100vh;
-	position: fixed;
-	top: 0;
-	left: 0;
-	display: none;
-	z-index: 1000;
-	text-align: center;
-}
-
-#overlay iframe {
-	margin-top: 4%;
-	max-width: 800px;
-	width: 60%;
-	height: 60%;
-	transform: none;
-	z-index: 800;
-}
-
-#overlay p, h1 {
-	color: white;
-	width: 80%;
-	max-width: 600px;
-	margin: 0 auto;
-}
-
-#overlay h1 {
-	margin-top: 20px;
-}
-
-#nextArrow,
-#prevArrow {
-	border-radius: 50%;
-	height: 50px;
-	width: 50px;
-	display: inline-block;
-	border: none;
-	margin-bottom: 15%;
-}
-
-#nextArrow {
-	background: url(../img/icons/right-arrow.png) no-repeat;
-	background-size: cover;
-	background-color: white;
-	margin-left: 6%;
-}
-
-#prevArrow {
-	background: url(../img/icons/left-arrow.png) no-repeat;
-	background-size: cover;
-	background-color: white;
-	margin-right: 4%;
-}
-
-#prevArrow:hover,
-#nextArrow:hover {
-	transform: scale(1.2);
-}
-
-.img-resize {
-	max-width: 100%;
-	text-align: center;
-}
-
-.img-resize:hover {
-	transform: none;
-}
-
-@media (max-width: 680px) {
-	#prevArrow {
-		margin-bottom: 40px;
-		margin-right: -125px;
-	}
-
-	#nextArrow {
-		margin-bottom: 40px;
-		margin-left: -100px;
-	}
-
-	#overlay iframe {
-		width: 90%;
-	}
-
-	#overlay h1 {
-		margin-top: 50px;
-	}
-}
-
-@media (max-width: 540px) {
-	#prevArrow {
-		margin-bottom: 140px;
-		margin-right: -125px;
-	}
-
-	#nextArrow {
-		margin-bottom: 140px;
-		margin-left: -100px;
-	}
-
-	#overlay iframe {
-		width: 90%;
-	}
-
-	#overlay h1 {
-		margin-top: -100px;
-	}
-}
-
-
-
-
-
-
-
 
 
